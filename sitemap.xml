@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main Portfolio Page -->
+  <url>
+    <loc>https://prabavathimagesh.github.io/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://prabavathimagesh.github.io/assets/profile-image.jpg</image:loc>
+      <image:title>Prabavathi M - Full Stack Developer</image:title>
+      <image:caption>Professional profile photo of Prabavathi M, Full Stack Developer</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Resume PDF -->
+  <url>
+    <loc>https://prabavathimagesh.github.io/assets/prabavathi_resume.pdf</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project Images -->
+  <url>
+    <loc>https://prabavathimagesh.github.io/assets/project1.jpg</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://prabavathimagesh.github.io/assets/project2.jpg</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://prabavathimagesh.github.io/assets/project3.jpg</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://prabavathimagesh.github.io/assets/project4.jpg</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
