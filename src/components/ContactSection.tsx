@@ -61,8 +61,8 @@ const ContactSection = () => {
       return;
     }
 
-    // reCAPTCHA validation
-    if (!recaptchaToken) {
+    // reCAPTCHA validation (only if enabled)
+    if (RECAPTCHA_CONFIG.ENABLED && !recaptchaToken) {
       toast({
         title: "Please complete the reCAPTCHA",
         description: "reCAPTCHA verification is required to send your message.",
@@ -80,7 +80,7 @@ const ContactSection = () => {
         from_email: formData.email,
         message: formData.message,
         to_email: EMAILJS_CONFIG.TO_EMAIL,
-        recaptcha_token: recaptchaToken, // Include reCAPTCHA token
+        ...(RECAPTCHA_CONFIG.ENABLED && { recaptcha_token: recaptchaToken }), // Include reCAPTCHA token only if enabled
       };
 
       // Send email using EmailJS
@@ -101,7 +101,7 @@ const ContactSection = () => {
       // Reset form and reCAPTCHA
       setFormData({ name: '', email: '', message: '' });
       setRecaptchaToken(null);
-      if (recaptchaRef.current) {
+      if (RECAPTCHA_CONFIG.ENABLED && recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
       
@@ -116,7 +116,7 @@ const ContactSection = () => {
       
       // Reset reCAPTCHA on error
       setRecaptchaToken(null);
-      if (recaptchaRef.current) {
+      if (RECAPTCHA_CONFIG.ENABLED && recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
     } finally {
@@ -222,21 +222,23 @@ const ContactSection = () => {
                   />
                 </div>
 
-                {/* reCAPTCHA */}
-                <div className="flex justify-center">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={RECAPTCHA_CONFIG.SITE_KEY}
-                    onChange={handleRecaptchaChange}
-                    onExpired={handleRecaptchaExpired}
-                    theme={RECAPTCHA_CONFIG.THEME}
-                    size={RECAPTCHA_CONFIG.SIZE}
-                  />
-                </div>
+                {/* reCAPTCHA (conditionally rendered) */}
+                {RECAPTCHA_CONFIG.ENABLED && (
+                  <div className="flex justify-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={RECAPTCHA_CONFIG.SITE_KEY}
+                      onChange={handleRecaptchaChange}
+                      onExpired={handleRecaptchaExpired}
+                      theme={RECAPTCHA_CONFIG.THEME}
+                      size={RECAPTCHA_CONFIG.SIZE}
+                    />
+                  </div>
+                )}
 
                 <button
                   type="submit"
-                  disabled={isSubmitting || !recaptchaToken}
+                  disabled={isSubmitting || (RECAPTCHA_CONFIG.ENABLED && !recaptchaToken)}
                   className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
                   {isSubmitting ? (
