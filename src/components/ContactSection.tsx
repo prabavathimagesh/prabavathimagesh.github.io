@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Send, CheckCircle, Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '@/config/emailjs';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { RECAPTCHA_CONFIG } from '@/config/recaptcha';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -11,12 +13,27 @@ const ContactSection = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleRecaptchaExpired = () => {
+    setRecaptchaToken(null);
+    toast({
+      title: "reCAPTCHA Expired",
+      description: "Please verify the reCAPTCHA again.",
+      variant: "destructive",
     });
   };
 
@@ -44,6 +61,16 @@ const ContactSection = () => {
       return;
     }
 
+    // reCAPTCHA validation
+    if (!recaptchaToken) {
+      toast({
+        title: "Please complete the reCAPTCHA",
+        description: "reCAPTCHA verification is required to send your message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -53,6 +80,7 @@ const ContactSection = () => {
         from_email: formData.email,
         message: formData.message,
         to_email: EMAILJS_CONFIG.TO_EMAIL,
+        recaptcha_token: recaptchaToken, // Include reCAPTCHA token
       };
 
       // Send email using EmailJS
@@ -70,8 +98,12 @@ const ContactSection = () => {
         description: "Thank you for reaching out. I'll get back to you within 24 hours!",
       });
       
-      // Reset form
+      // Reset form and reCAPTCHA
       setFormData({ name: '', email: '', message: '' });
+      setRecaptchaToken(null);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
       
     } catch (error) {
       console.error('Error sending email:', error);
@@ -81,6 +113,12 @@ const ContactSection = () => {
         description: "Something went wrong. Please try again or contact me directly.",
         variant: "destructive",
       });
+      
+      // Reset reCAPTCHA on error
+      setRecaptchaToken(null);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -184,9 +222,21 @@ const ContactSection = () => {
                   />
                 </div>
 
+                {/* reCAPTCHA */}
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={RECAPTCHA_CONFIG.SITE_KEY}
+                    onChange={handleRecaptchaChange}
+                    onExpired={handleRecaptchaExpired}
+                    theme={RECAPTCHA_CONFIG.THEME}
+                    size={RECAPTCHA_CONFIG.SIZE}
+                  />
+                </div>
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !recaptchaToken}
                   className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
                   {isSubmitting ? (

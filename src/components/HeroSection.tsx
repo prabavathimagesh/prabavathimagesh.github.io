@@ -12,7 +12,12 @@ const HeroSection = () => {
   const skills = ['React', 'Node.js', 'TypeScript', 'MongoDB'];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+    <section 
+      id="hero" 
+      className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden"
+      itemScope 
+      itemType="https://schema.org/Person"
+    >
       {/* Enhanced particle system */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Primary floating particles */}

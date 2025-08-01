@@ -12,3 +12,33 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap location
+Sitemap: https://prabavathimagesh.github.io/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Allow access to important assets
+Allow: /assets/
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.pdf
+Allow: *.svg
+Allow: *.ico
+
+# Block access to development files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /package*.json
+Disallow: /*.config.js
+Disallow: /*.config.ts
+Disallow: /tsconfig*.json
+
+# Host directive
+Host: https://prabavathimagesh.github.io
