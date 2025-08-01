@@ -43,7 +43,7 @@ const ResumeSection = () => {
             
             <div className="space-y-3">
               <a
-                href="/assets/resume.pdf"
+                href="/assets/prabavathi_resume.pdf"
                 download="Prabavathi_M_Resume.pdf"
                 className="w-full inline-flex items-center justify-center space-x-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-medium hover:scale-105"
               >
