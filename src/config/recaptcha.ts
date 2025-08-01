@@ -3,7 +3,7 @@
 
 export const RECAPTCHA_CONFIG = {
   // Site key (public key) - to be replaced with your actual site key
-  SITE_KEY: process.env.VITE_RECAPTCHA_SITE_KEY || 'YOUR_SITE_KEY_HERE',
+  SITE_KEY: process.env.VITE_RECAPTCHA_SITE_KEY || '6LcCTZcrAAAAAG8OXO-5g068_UGb3AKoM1J3zUSY',
   
   // Secret key is handled on the server side for security
   // This is just for reference - never expose secret key in frontend
