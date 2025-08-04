@@ -141,7 +141,7 @@ const ContactSection = () => {
       icon: Linkedin,
       label: 'LinkedIn',
       value: 'Connect with me',
-      href: 'www.linkedin.com/in/prabavathi-m-5b176227b',
+      href: 'https://www.linkedin.com/in/prabavathi-m-5b176227b',
     },
     {
       icon: Github,

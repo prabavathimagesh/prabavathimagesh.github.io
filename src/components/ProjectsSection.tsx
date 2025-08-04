@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       icon: Users,
       technologies: ['React.js', 'Node.js', 'MongoDB', 'Express'],
       features: ['Employee Dashboard', 'Attendance System', 'Leave Management', 'Performance Tracking'],
-      link: '#',
+      link: '',
       github: '#',
     },
     {
@@ -113,17 +113,19 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="flex space-x-4">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary-dark hover:scale-105"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-medium">Live Demo</span>
-                  </a>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary-dark hover:scale-105"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span className="text-sm font-medium">Live Demo</span>
+                    </a>
+                  )}
                   
-                  <a
+                  {/* <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -131,7 +133,7 @@ const ProjectsSection = () => {
                   >
                     <Github className="w-4 h-4" />
                     <span className="text-sm font-medium">Code</span>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

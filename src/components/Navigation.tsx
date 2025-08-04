@@ -53,7 +53,7 @@ const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
                 <Mail size={18} />
               </a>
               <a
-                href="https://linkedin.com/in/prabavathi-m"
+                href="https://www.linkedin.com/in/prabavathi-m-5b176227b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full text-muted-foreground hover:text-primary transition-colors"

@@ -109,7 +109,7 @@ const HeroSectionCreative = () => {
             </div>
             
             <div className="creative-social-links">
-              <a href="www.linkedin.com/in/prabavathi-m-5b176227b" className="creative-social-link linkedin">
+              <a href="https://www.linkedin.com/in/prabavathi-m-5b176227b" className="creative-social-link linkedin">
                 <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a href="https://github.com/prabavathimagesh" className="creative-social-link github">

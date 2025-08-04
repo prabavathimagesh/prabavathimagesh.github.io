@@ -6,7 +6,7 @@ export const RECAPTCHA_CONFIG = {
   ENABLED: false, // Default: true, set to 'false' in .env to disable
   
   // Site key (public key) - to be replaced with your actual site key
-  SITE_KEY: process.env.VITE_RECAPTCHA_SITE_KEY || '6LcCTZcrAAAAAG8OXO-5g068_UGb3AKoM1J3zUSY',
+  SITE_KEY: '6LcCTZcrAAAAAG8OXO-5g068_UGb3AKoM1J3zUSY',
   
   // Secret key is handled on the server side for security
   // This is just for reference - never expose secret key in frontend

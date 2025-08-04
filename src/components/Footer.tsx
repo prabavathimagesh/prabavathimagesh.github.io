@@ -6,7 +6,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Mail, href: 'mailto:prabavathi3898@gmail.com', label: 'Email' },
     { icon: Phone, href: 'tel:+919445373019', label: 'Phone' },
-    { icon: Linkedin, href: 'www.linkedin.com/in/prabavathi-m-5b176227b', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/prabavathi-m-5b176227b', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/prabavathimagesh', label: 'GitHub' },
   ];
 

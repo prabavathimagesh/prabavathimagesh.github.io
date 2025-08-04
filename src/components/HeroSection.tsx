@@ -5,7 +5,7 @@ const HeroSection = () => {
   const socialLinks = [
     { icon: Mail, href: 'mailto:prabavathi3898@gmail.com', label: 'Email', color: 'hover:bg-red-500' },
     { icon: Phone, href: 'tel:+919445373019', label: 'Phone', color: 'hover:bg-green-500' },
-    { icon: Linkedin, href: 'www.linkedin.com/in/prabavathi-m-5b176227b', label: 'LinkedIn', color: 'hover:bg-blue-500' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/prabavathi-m-5b176227b', label: 'LinkedIn', color: 'hover:bg-blue-500' },
     { icon: Github, href: 'https://github.com/prabavathimagesh', label: 'GitHub', color: 'hover:bg-gray-800' },
   ];
 
